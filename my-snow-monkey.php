@@ -1,7 +1,8 @@
 <?php
+
 /**
  * Plugin name: My Snow Monkey
- * Description: このプラグインに、あなたの Snow Monkey 用カスタマイズコードを書いてください。
+ * Description: 不具合が生じた場合、このプラグインをオフにすることでテーマ側の問題点と切り分けできます。
  * Version: 0.2.1
  *
  * @package my-snow-monkey
@@ -72,3 +73,11 @@ function disable_image_sizes($new_sizes)
 add_filter('intermediate_image_sizes_advanced', 'disable_image_sizes');
 
 add_filter('big_image_size_threshold', '__return_false');
+
+// my-snow-monkeyのCSSを編集画面でも反映する
+add_action('after_setup_theme', 'my_editor_style_setup');
+function my_editor_style_setup()
+{
+  add_theme_support( 'editor-styles' );
+  add_editor_style(MY_SNOW_MONKEY_URL . '/css/myplugin_css.css' );
+}
