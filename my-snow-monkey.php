@@ -32,8 +32,8 @@ define( 'MY_SNOW_MONKEY_URL', untrailingslashit( plugin_dir_url( __FILE__ ) ) );
  */
 define( 'MY_SNOW_MONKEY_PATH', untrailingslashit( plugin_dir_path( __FILE__ ) ) );
 
-//
-add_action('wp_enqueue_scripts', 'msm_enqueue_style_script');
+//CSS JSの読み込み 第3引数の11はCSSを読み込む順番を指定
+add_action('wp_enqueue_scripts', 'msm_enqueue_style_script', 11 ,1);
 function msm_enqueue_style_script()
 {
 	wp_enqueue_style(
